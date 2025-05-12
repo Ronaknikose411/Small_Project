@@ -1,11 +1,14 @@
 version: 1
 backend:
   phases:
+    preBuild:
+      commands:
+        - npm install -g @aws-amplify/cli  # Install Amplify CLI if not already present
     build:
       commands:
         - cd backend
         - npm ci
-        - amplifyPush --simple  # Deploys backend resources (if configured)
+        - amplifyPush --simple  # Deploys backend resources
 frontend:
   phases:
     preBuild:
