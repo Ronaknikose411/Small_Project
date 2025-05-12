@@ -1,28 +1,28 @@
 version: 1
 backend:
-  phases:
-    preBuild:
-      commands:
-        - npm install -g @aws-amplify/cli  # Install Amplify CLI if not already present
-    build:
-      commands:
-        - cd backend
-        - npm ci
-        - amplifyPush --simple  # Deploys backend resources
+    phases:
+        preBuild:
+            commands:
+                - npm install -g @aws-amplify/cli  # Install Amplify CLI for amplifyPush
+        build:
+            commands:
+                - cd backend
+                - npm ci  # Install backend dependencies
+                - amplifyPush --simple  # Deploy backend resources
 frontend:
-  phases:
-    preBuild:
-      commands:
-        - cd Frontend
-        - npm ci
-    build:
-      commands:
-        - npm run build
-  artifacts:
-    baseDirectory: Frontend/dist  # Updated to match Vite output
-    files:
-      - '**/*'
-  cache:
-    paths:
-      - Frontend/node_modules/**/*
-      - backend/node_modules/**/*
+    phases:
+        preBuild:
+            commands:
+                - cd Frontend
+                - npm ci  # Install frontend dependencies
+        build:
+            commands:
+                - npm run build  # Build the frontend (generates Frontend/dist)
+    artifacts:
+        baseDirectory: Frontend/dist  # Matches Vite output
+        files:
+            - '**/*'
+    cache:
+        paths:
+            - Frontend/node_modules/**/*
+            - backend/node_modules/**/*
