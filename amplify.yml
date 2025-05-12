@@ -19,7 +19,7 @@ frontend:
       commands:
         - npm run build
   artifacts:
-    baseDirectory: Frontend/build  # Updated to match Create React App output
+    baseDirectory: Frontend/dist  # Updated to match Vite output
     files:
       - '**/*'
   cache:
