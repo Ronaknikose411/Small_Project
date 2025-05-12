@@ -3,7 +3,7 @@ frontend:
   phases:
     preBuild:
       commands:
-        - cd frontend  # Correct directory name
+        - cd frontend  # Confirm this matches the actual directory name
         - npm install
     build:
       commands:
