@@ -5,7 +5,7 @@ backend:
       commands:
         - cd backend
         - npm ci
-        - amplifyPush --simple  # Deploys backend resources
+        - amplifyPush --simple  # Deploys backend resources (if configured)
 frontend:
   phases:
     preBuild:
@@ -16,9 +16,10 @@ frontend:
       commands:
         - npm run build
   artifacts:
-    baseDirectory: Frontend/dist
+    baseDirectory: Frontend/dist  # Adjust to Frontend/build if using Create React App
     files:
       - '**/*'
   cache:
     paths:
       - Frontend/node_modules/**/*
+      - backend/node_modules/**/*
