@@ -3,14 +3,15 @@ frontend:
   phases:
     preBuild:
       commands:
-        - npm ci  # Install dependencies in the root
+        - cd Frontend  # Navigate to Frontend folder
+        - npm ci      # Install dependencies
     build:
       commands:
         - npm run build  # Run the build command
   artifacts:
-    baseDirectory: dist  # Vite output directory
+    baseDirectory: Frontend/dist  # Vite output directory
     files:
       - '**/*'
   cache:
     paths:
-      - node_modules/**/*
+      - Frontend/node_modules/**/*
