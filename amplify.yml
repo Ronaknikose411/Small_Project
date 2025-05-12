@@ -1,15 +1,22 @@
 version: 1
+backend:
+  phases:
+    build:
+      commands:
+        - cd backend
+        - npm ci
+        - amplifyPush --simple  # Deploys backend resources
 frontend:
   phases:
     preBuild:
       commands:
-        - cd Frontend  # Navigate to Frontend folder
-        - npm ci      # Install dependencies
+        - cd Frontend
+        - npm ci
     build:
       commands:
-        - npm run build  # Run the build command
+        - npm run build
   artifacts:
-    baseDirectory: Frontend/dist  # Vite output directory
+    baseDirectory: Frontend/dist
     files:
       - '**/*'
   cache:
